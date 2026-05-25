@@ -1,0 +1,74 @@
+// ==========================================
+    // 4. KODE BARU: Animasi Jawaban AI (Fade-In & Slide-Up)
+    // ==========================================
+    const aiContents = document.querySelectorAll('.ai-content');
+    if (aiContents.length > 0) {
+        // Ambil elemen jawaban AI yang PALING TERAKHIR
+        const lastAiContent = aiContents[aiContents.length - 1];
+        const lastAiWrapper = lastAiContent.closest('.ai-wrapper');
+        
+        // 1. Kunci posisi layar persis di ATAS pesan AI ini
+        setTimeout(() => {
+            if (lastAiWrapper) {
+                // Hitung posisi elemen, dikurangi 20px agar teks tidak terlalu mepet ke atap layar
+                const elementPosition = lastAiWrapper.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({
+                    top: elementPosition - 20, 
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+
+        // 2. Ambil semua bagian teks utuh, list poin, dan gambar
+        const elementsToReveal = lastAiContent.querySelectorAll('p, li, img, h1, h2, h3, h4, blockquote');
+        
+        if (elementsToReveal.length > 0) {
+            // Sembunyikan dengan opacity DAN geser sedikit ke bawah 20px
+            elementsToReveal.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)'; // Memulai posisi dari bawah
+                el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            });
+            
+            const evalMetrics = lastAiWrapper ? lastAiWrapper.querySelector('.eval-metrics') : null;
+            const usabilityFeedback = lastAiWrapper ? lastAiWrapper.querySelector('.usability-feedback') : null;
+            
+            if (evalMetrics) evalMetrics.style.opacity = '0';
+            if (usabilityFeedback) usabilityFeedback.style.opacity = '0';
+
+            let index = 0;
+            
+            // 3. Munculkan teks utuh satu per satu secara tenang (Slide-Up)
+            function revealNextElement() {
+                if (index < elementsToReveal.length) {
+                    elementsToReveal[index].style.opacity = '1';
+                    elementsToReveal[index].style.transform = 'translateY(0)'; // Meluncur naik ke posisi asli
+                    // FITUR BARU: Layar akan otomatis "berjalan" (scroll) turun 
+                    // JIKA jawaban baru yang muncul sudah melewati batas bawah layar.
+                    currentEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    index++;
+                    setTimeout(revealNextElement, 150); // Jeda antar elemen
+                } else {
+                    if (evalMetrics) {
+                        evalMetrics.style.transition = 'opacity 0.5s ease-in';
+                        evalMetrics.style.opacity = '1';
+                    }
+                    if (usabilityFeedback) {
+                        usabilityFeedback.style.transition = 'opacity 0.5s ease-in';
+                        usabilityFeedback.style.opacity = '1';
+                    }
+                    
+                    // Setelah seluruh teks selesai, gulir sedikit lagi 
+                    // agar kotak ketik di bawah layar kembali terlihat penuh.
+                    setTimeout(() => {
+                        const bottomDiv = document.getElementById('bottom-of-chat');
+                        if (bottomDiv) bottomDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    }, 500);
+                }
+            }
+            
+            // Mulai munculkan teks 300ms setelah halaman selesai dimuat
+            setTimeout(revealNextElement, 300);
+        }
+    }

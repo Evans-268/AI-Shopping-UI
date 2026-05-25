@@ -1,0 +1,261 @@
+/* static/shop_style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #EAEAEA; /* Latar belakang terang sesuai gambar */
+    color: #333;
+}
+
+/* --- HEADER --- */
+.top-nav {
+    background-color: #00CE52; /* Warna header hijau */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+/* Pastikan wadah link navigasi menggunakan Flexbox agar semua sejajar rata tengah */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+/* Mengatur agar logo dan teks nama toko sejajar dengan rapi */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Memberikan jarak sedikit antara gambar logo dan teks ShopAssist */
+    font-weight: 700; /* Opsional: Membuat nama toko sedikit lebih tebal */
+    font-size: 16px !important; /* Membuat nama toko lebih besar dari menu lainnya */
+}
+
+/* Mengatur ukuran gambar logo agar pas dengan tinggi header */
+.brand-logo img {
+    height: 50px; /* Membatasi tinggi logo */
+    width: auto;  /* Lebarnya menyesuaikan secara otomatis */
+    object-fit: contain; /* Memastikan logo tidak terlihat gepeng (distorsi) */
+    border-radius: 4px; /* Opsional: membuat ujung gambar sedikit melengkung */
+}
+
+/* Jika Anda memilih menggunakan Ikon dari Opsi 2, ini mengatur ukuran ikonnya */
+.brand-logo i {
+    font-size: 20px;
+}
+
+/* --- SEARCH --- */
+.search-container {
+    display: flex;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 300px;
+}
+
+.search-container input {
+    border: none;
+    padding: 8px 12px;
+    flex: 1;
+    outline: none;
+}
+
+.search-container button {
+    background: #e0e0e0;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.btn-ai-chat {
+    background: white;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- KONTEN UTAMA --- */
+.shop-container {
+    padding: 30px 5%;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Grid Produk */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 14px;
+    margin-bottom: 8px;
+    flex: 1;
+}
+
+.product-rating {
+    color: #f39c12;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Banner Biru Bawah */
+.special-banner {
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.banner-text {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.banner-text h2 { margin-bottom: 15px; font-size: 24px; }
+.banner-text p { line-height: 1.5; font-size: 14px; }
+
+.banner-img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+/* --- FOOTER PERBARUAN --- */
+.bottom-footer {
+    background-color: #F5F5F5; /* Latar belakang abu-abu terang sesuai gambar */
+    border-top: 5px solid #00CE52; /* Garis hijau tebal di bagian atas */
+    padding: 40px 5%;
+    display: grid;
+    grid-template-columns: 1.5fr 1.2fr 2fr 1fr; /* Membagi menjadi 4 kolom yang proporsional */
+    gap: 30px;
+}
+
+.footer-col { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+}
+
+.footer-col h4 { 
+    margin-bottom: 5px; 
+    font-size: 18px; 
+    font-weight: 700; 
+    color: #111; 
+}
+
+.footer-col a { 
+    color: #111; 
+    text-decoration: none; 
+    font-size: 15px; 
+}
+
+.footer-col a:hover { 
+    text-decoration: underline; 
+}
+
+/* Grid untuk logo pembayaran & pengiriman (3x2) */
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* Desain Kotak Logo Tiruan */
+.logo-box {
+    background: white;
+    padding: 5px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Warna khusus untuk meniru logo aslinya */
+.bca { color: #0050A2; font-style: italic; font-size: 16px;}
+.bri { color: #00529C; font-size: 16px;}
+.mandiri { color: #F2A128; }
+.bsi { color: #00A388; font-size: 14px;}
+.bni { color: #F15A24; font-size: 16px;}
+.visa { color: #1434CB; font-style: italic; font-size: 16px;}
+.gosend { color: #00AA13; }
+.grab { color: #00B14F; font-size: 10px;}
+.spx { color: #EE4D2D; font-style: italic; font-size: 16px;}
+.sicepat { color: #D02027; }
+.jne { color: #003399; font-style: italic; font-size: 15px;}
+.jnt { color: #E1251B; font-style: italic; font-size: 11px;}
+
+/* Desain Ikon Sosial Media */
+.social-col a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.social-col a i { font-size: 26px; }
+
+/* Warna asli ikon sosial media */
+.social-col a.fb i { color: #1877F2; }
+.social-col a.ig i { 
+    /* Membuat efek gradasi untuk ikon Instagram */
+    background: -webkit-linear-gradient(#f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    background-clip: text; /* <--- Tambahkan baris versi standar ini */
+    -webkit-text-fill-color: transparent;
+}
+.social-col a.tw i { color: #1DA1F2; }
+.social-col a.in i { color: #0A66C2; }
