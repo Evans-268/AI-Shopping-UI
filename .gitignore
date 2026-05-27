@@ -1,7 +1,0 @@
-# Mengabaikan file rahasia agar tidak bocor ke internet
-.env
-
-# Mengabaikan folder bawaan Python yang tidak perlu diupload
-venv/
-env/
-__pycache__/
